@@ -1,19 +1,39 @@
 import exampleVideoData from './../data/exampleVideoData.js';
-import App from './App.js';
+// import App from './App.js';
+import VideoListEntry from './VideoListEntry.js';
 // var exampleVideoData = require('../data/exampleVideoData.js');
-console.log(App);
 
-var VideoList = (props) => ( //App
+var VideoList = (props) => ( //VideoList
   <div className="video-list">
-    <indVids exampleVideoData = {exampleVideoData} />
+    {videoEntries}
   </div>
 );
 
-var indVids = (props) => ( //TodoList //Replace it with VideoListEntry
-  <div>
-    {props.exampleVideoData.map(video => <div><h5><em>{video['snippet']['title']}</em></h5>{video['snippet']['description']}</div>)}
-  </div>
+
+let videoEntries = exampleVideoData.map((exampleVid) =>
+  <VideoListEntry video = {exampleVid}/>
 );
+
+
+
+
+//example usage of map
+// function NumberList(props) {
+//   const numbers = props.numbers;
+//   const listItems = numbers.map((number) =>
+//     <li>{number}</li>
+//   );
+//   return (
+//     <ul>{listItems}</ul>
+//   );
+// }
+
+// const numbers = [1, 2, 3, 4, 5];
+// ReactDOM.render(
+//   <NumberList numbers={numbers} />,
+//   document.getElementById('root')
+// );
+
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
@@ -27,9 +47,3 @@ VideoList.propTypes = {
 // `var` declarations will only exist globally where explicitly defined.
 export default VideoList;
 
-
-// <div><h5>{props.exampleVideoData[0]['snippet']['title']}</h5>{exampleVideoData[0]['snippet']['description']}</div>
-//     <div><h5>{exampleVideoData[1]['snippet']['title']}</h5>{exampleVideoData[1]['snippet']['description']}</div>
-//     <div><h5>{exampleVideoData[2]['snippet']['title']}</h5>{exampleVideoData[2]['snippet']['description']}</div>
-//     <div><h5>{exampleVideoData[3]['snippet']['title']}</h5>{exampleVideoData[3]['snippet']['description']}</div>
-//     <div><h5>{exampleVideoData[4]['snippet']['title']}</h5>{exampleVideoData[4]['snippet']['description']}</div>
