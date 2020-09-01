@@ -9,9 +9,8 @@ var VideoList = (props) => ( //VideoList
   </div>
 );
 
-
 let videoEntries = exampleVideoData.map((exampleVid) =>
-  <VideoListEntry video = {exampleVid}/>
+  <VideoListEntry key = {exampleVid.id.videoId} video = {exampleVid}/>
 );
 
 
@@ -38,7 +37,7 @@ let videoEntries = exampleVideoData.map((exampleVid) =>
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
 VideoList.propTypes = {
-  videos: PropTypes.array.isRequired
+  // videos: PropTypes.array.isRequired
 };
 
 // ReactDOM.render(<VideoList />, document.getElementById('videoList'));
