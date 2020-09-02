@@ -6,5 +6,13 @@ var searchYouTube = (options, callback) => {
     maxResults: max || 5,
     type: 'video',
     videoEmbaddable: 'true'
-  });
+  })
+    .done(({items}) => {
+      if (callback) {
+        callback(items);
+      }
+    })
+    .fail(({responseJSON}) => {
+      responseJSON.error.errors.forEach((err) => console.error(err));
+    });
 };

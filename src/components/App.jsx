@@ -13,6 +13,24 @@ class App extends React.Component {
 
   }
 
+  componentDidMount() {
+    this.getYoutubeVideos('search');
+  }
+
+  getYoutubeVideos(query) {
+    var options = {
+      key: this.props.API_KEY,
+      query: query
+    };
+
+    this.props.searchYouTube(options, (videos) => {
+      this.setState({
+        videos: videos,
+        currentVideo: videos[0]
+      });
+    });
+  }
+
   eventHandlerVideoClick(video) {
     console.log(video);
     this.setState({
@@ -23,9 +41,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar">
+        <nav className="navbar" />
           <div className="col-md-6 offset-md-3">
-            <div><h5><em><Search /></em> </h5></div>
+            <div><h5><em><Search handleSearchInputChange={this.getYoutubeVideos.bind(this)}/></em> </h5></div>
           </div>
         </nav>
         <div className="row">
